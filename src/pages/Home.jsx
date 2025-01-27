@@ -5,6 +5,7 @@ import { Github, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { useState, useEffect } from 'react';
+import ShinyText from './ShinyText';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,15 +62,15 @@ const Home = () => {
             className="lg:w-1/2"
           >
             <h1 className="text-5xl font-Tajawal-bold mb-6">
-              Hi, I'm <span className="text-blue-500">Rakshit</span>
+             <ShinyText text =" Hi, I'm"/> <span className="text-gradient text-5xl font-semi-bold"><ShinyText text="Rakshit"/></span>
             </h1>
             <h2 className="text-3xl text-gray-300 mb-8 font-Tajawal">
               Fullstack Web Developer
             </h2>
             <p className="text-gray-400 mb-8 text-lg font-Tajawal">
-              I create beautiful and functional web experiences using modern
+              <ShinyText text="I create beautiful and functional web experiences using modern
               technologies. Specialized in React and passionate about user
-              interface design.
+              interface design."/>
             </p>
             <div className="flex space-x-4">
               <Link to="/contact">

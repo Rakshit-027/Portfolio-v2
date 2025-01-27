@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, User, Briefcase, Mail, Home, Menu, X } from 'lucide-react';
+import ShinyText from '../pages/ShinyText';
 
 const Navbar = () => {
   const location = useLocation();
@@ -27,8 +28,8 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full bg-gray-inherit shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-Tajawal text-blue-500">
-            Rakshit Waghmare
+          <Link to="/" className="text-gradient text-2xl font-bold">
+            <ShinyText text='Rakshit Waghmare'/>
           </Link>
 
           {/* Desktop Menu */}

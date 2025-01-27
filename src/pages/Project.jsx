@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Star, Code2 } from "lucide-react";
 import Loader from "../components/Loader";
+import ShinyText from "./ShinyText";
 
 // ProjectCard Component
 const ProjectCard = ({ project, delay = 0 }) => (
@@ -9,6 +10,7 @@ const ProjectCard = ({ project, delay = 0 }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
+    whileHover={{ scale: 1.05 }}
     className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
   >
     <img
@@ -71,7 +73,7 @@ const Project = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // 1.5 seconds delay
+    }, 3000); // 3 seconds delay
 
     return () => clearTimeout(timer);
   }, []);
@@ -110,7 +112,7 @@ const Project = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen pt-16 px-4 bg-black text-white"
+      className="min-h-screen pt-16 px-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white"
     >
       <div className="max-w-7xl mx-auto py-20">
         <motion.div
@@ -119,9 +121,11 @@ const Project = () => {
           transition={{ delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">My Projects</h2>
+          <h2 className="text-4xl font-bold mb-4">
+            <ShinyText text="My Projects" />
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Here are some of my recent projects. Each one is crafted with attention to detail and focus on user experience.
+            <ShinyText text="Here are some of my recent projects. Each one is crafted with attention to detail and focus on user experience." />
           </p>
         </motion.div>
 
@@ -136,6 +140,36 @@ const Project = () => {
         ) : (
           <p className="text-center text-gray-400">No projects available at the moment.</p>
         )}
+
+        {/* Featured Projects Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-20"
+        >
+          <h2 className="text-2xl font-bold mb-6">
+            <ShinyText text="Featured Projects" />
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.slice(0, 3).map((project, index) => (
+              <motion.div
+                key={project.id || index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-gray-800 p-6 rounded-lg shadow-lg"
+              >
+                <div className="flex items-center space-x-4 mb-4">
+                  <Star className="w-8 h-8 text-pink-500" />
+                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                </div>
+                <p className="text-gray-400">{project.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );

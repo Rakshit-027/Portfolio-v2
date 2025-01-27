@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background-color: black;
+    background-color:#18202f;
 }
 @layer utilities {
     .text-gradient {
@@ -11,4 +11,31 @@ body{
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+  }
+  @layer utilities{
+    
+
+  }
+  @keyframes shine {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  .shiny-text {
+    background: linear-gradient(90deg, #ff008c, #ff8c00, #ff008c);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
+
+  .Loder-align{
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }

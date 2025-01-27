@@ -1,23 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Loader from '../components/Loader';
-import { Calendar, Building2, GraduationCap, Award } from 'lucide-react';
-import { useState,useEffect } from 'react';
+import { Calendar, Building2, GraduationCap, Award, Code, Briefcase } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import ShinyText from './ShinyText';
 
 const Experience = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000) // 1.5 seconds delay
+      setIsLoading(false);
+    }, 3000); // 3 seconds delay
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
+
   const experiences = [
     {
       title: 'Senior Frontend Developer',
@@ -47,7 +49,7 @@ const Experience = () => {
       title: 'JavaScript: From First Steps to Professional',
       issuer: 'Anjana Vakil',
       year: '2023',
-      description: 'Mastering advanced React patterns for cleaner, more maintainable code.Harnessing the full power of hooks to manage state, side effects, and context.Optimizing React applications for better performance and faster rendering',
+      description: 'Mastering advanced React patterns for cleaner, more maintainable code. Harnessing the full power of hooks to manage state, side effects, and context. Optimizing React applications for better performance and faster rendering.',
     },
     {
       title: 'Know About Git',
@@ -62,7 +64,7 @@ const Experience = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen pt-16 px-4"
+      className="min-h-screen pt-16 px-4 bg-gradient-to-r from-gray-900 to-gray-800"
     >
       <div className="max-w-7xl mx-auto py-20">
         <motion.div
@@ -71,9 +73,11 @@ const Experience = () => {
           transition={{ delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Experience</h2>
+          <h2 className="text-4xl font-bold mb-4">
+            <ShinyText text="Experience" />
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            My professional journey in software development, showcasing my growth and achievements.
+            <ShinyText text="My professional journey in software development, showcasing my growth and achievements." />
           </p>
         </motion.div>
 
@@ -84,7 +88,8 @@ const Experience = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
-              className="bg-gray-800 p-6 rounded-lg flex items-start gap-6"
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 p-6 rounded-lg flex items-start gap-6 shadow-lg"
             >
               <div className="bg-pink-500/10 p-3 rounded-lg">
                 <exp.icon className="w-6 h-6 text-pink-500" />
@@ -107,7 +112,7 @@ const Experience = () => {
         >
           <h3 className="text-2xl font-bold mb-8 flex items-center">
             <Award className="w-6 h-6 text-pink-500 mr-2" />
-            Certifications
+            <ShinyText text="Certifications" />
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
@@ -116,13 +121,55 @@ const Experience = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className="bg-gray-800 p-6 rounded-lg"
+                whileHover={{ scale: 1.02 }}
+                className="bg-gray-800 p-6 rounded-lg shadow-lg"
               >
                 <h4 className="text-lg font-semibold mb-2">{cert.title}</h4>
                 <p className="text-pink-500 text-sm mb-2">{cert.issuer} • {cert.year}</p>
                 <p className="text-gray-400">{cert.description}</p>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Achievements Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="mt-20"
+        >
+          <h3 className="text-2xl font-bold mb-8 flex items-center">
+            <Briefcase className="w-6 h-6 text-pink-500 mr-2" />
+            <ShinyText text="Achievements" />
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <Code className="w-8 h-8 text-pink-500" />
+                <h4 className="text-lg font-semibold">Open Source Contributions</h4>
+              </div>
+              <p className="text-gray-400">Contributed to several open-source projects, improving functionality and fixing bugs.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <GraduationCap className="w-8 h-8 text-pink-500" />
+                <h4 className="text-lg font-semibold">Mentorship</h4>
+              </div>
+              <p className="text-gray-400">Mentored junior developers, helping them grow their skills and advance their careers.</p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

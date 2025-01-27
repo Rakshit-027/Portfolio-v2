@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet'; // Add React Helmet for SEO
-import { Github, Instagram, Linkedin } from 'lucide-react';
+import { Github, Instagram, Linkedin, Code, Briefcase, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { useState, useEffect } from 'react';
@@ -52,7 +52,7 @@ const Home = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen pt-16 px-4"
+        className="min-h-screen pt-16 px-4 bg-gradient-to-r from-gray-900 to-gray-800"
       >
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between py-20">
           <motion.div
@@ -62,15 +62,16 @@ const Home = () => {
             className="lg:w-1/2"
           >
             <h1 className="text-5xl font-Tajawal-bold mb-6">
-             <ShinyText text =" Hi, I'm"/> <span className="text-gradient text-5xl font-semi-bold"><ShinyText text="Rakshit"/></span>
+              <ShinyText text="Hi, I'm" />{' '}
+              <span className="text-gradient text-5xl font-semi-bold">
+                <ShinyText text="Rakshit" />
+              </span>
             </h1>
             <h2 className="text-3xl text-gray-300 mb-8 font-Tajawal">
               Fullstack Web Developer
             </h2>
             <p className="text-gray-400 mb-8 text-lg font-Tajawal">
-              <ShinyText text="I create beautiful and functional web experiences using modern
-              technologies. Specialized in React and passionate about user
-              interface design."/>
+              <ShinyText text="I create beautiful and functional web experiences using modern technologies. Specialized in React and passionate about user interface design." />
             </p>
             <div className="flex space-x-4">
               <Link to="/contact">
@@ -112,7 +113,7 @@ const Home = () => {
                 <Linkedin className="w-6 h-6 text-gray-400 hover:text-pink-500 transition-colors" />
               </a>
               <a
-                href="https://www.instagram.com/__rakshit_27__?igsh=cW1qOXZkZjJrOHYz"
+                href="https://www.instagram.com/rakshit.27_?igsh=cW1qOXZkZjJrOHYz"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -136,6 +137,62 @@ const Home = () => {
             />
           </motion.div>
         </div>
+
+        {/* Additional Details Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="max-w-7xl mx-auto mt-20 px-4"
+        >
+          <h2 className="text-3xl font-Tajawal-bold text-gray-300 mb-8">
+            <ShinyText text="Skills & Achievements" />
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <Code className="w-8 h-8 text-pink-500" />
+                <h3 className="text-xl font-Tajawal-bold text-gray-300">
+                  Web Development
+                </h3>
+              </div>
+              <p className="text-gray-400">
+                Proficient in building responsive and dynamic websites using React, Node.js, and modern web technologies.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <Briefcase className="w-8 h-8 text-pink-500" />
+                <h3 className="text-xl font-Tajawal-bold text-gray-300">
+                  Professional Experience
+                </h3>
+              </div>
+              <p className="text-gray-400">
+                Over 3 years of experience in web development, working with startups and established companies.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <Award className="w-8 h-8 text-pink-500" />
+                <h3 className="text-xl font-Tajawal-bold text-gray-300">
+                  Certifications
+                </h3>
+              </div>
+              <p className="text-gray-400">
+                Certified in React, JavaScript, and UI/UX design from top online platforms.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
     </>
   );
